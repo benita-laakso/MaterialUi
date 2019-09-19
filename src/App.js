@@ -68,7 +68,7 @@ const App = () => {
 </div>
 
 
-    <form className="testing" direction="column">
+    <form  direction="column">
       <TextField fullWidth="true"
       id="outlined-name"
       label="Firstname"
