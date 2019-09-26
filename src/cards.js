@@ -7,6 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import './styles.css';
 import Typography from '@material-ui/core/Typography';
 
+import treepic from './img/tree.jpg';
+
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
@@ -29,9 +31,11 @@ export default function MediaCard() {
   alignItems="center">
     <Card className={classes.card}>
         <CardMedia
-          className={classes.media}
-          image="img/cards/tree.jpg"
+          component="img"
+          image={treepic}
           title="Tree"
+          height="200"
+          alt="Title"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
