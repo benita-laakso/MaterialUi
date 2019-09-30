@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 
 import treepic from "./img/tree.jpg";
 
+
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   }
 });
 
-const data = [{ text: "hello", id:1 }, { text: "goodby", id:2 }];
+const data = [{ text: "hello", id:1 , buttontext:"Read more" }, { text: "goodby", id:2, buttontext:"Read more" }];
 
 export default function MediaCard() {
   const classes = useStyles();
@@ -42,7 +43,11 @@ return (
             <Typography variant="body2" color="textSecondary" component="p">
               {post.id}
             </Typography>
+            <div><button>{post.buttontext}</button>
+            </div>
           </CardContent>
+
+
         </Card>
       ))}
       </Grid>

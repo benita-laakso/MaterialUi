@@ -19,29 +19,48 @@ import InboxIcon from '@material-ui/icons/Inbox';
 import EcoIcon from '@material-ui/icons/Eco';
 import './App.css';
 import './styles.css';
-
+import { Route, Link, BrowserRouter as Router,Switch } from 'react-router-dom'
+import Users from './users'
+import Contact from './contact'
+import Home from './home'
 //Toolbar makes button small size and horisontal
 //https://stackoverflow.com/questions/47686456/whats-the-right-way-to-float-right-or-left-using-the-material-ui-appbar-with-ma
 const App = () => {
   return (
+
     <div>
+      <Router>
       <AppBar position="static">
         <Toolbar>
           <Typography type="title" color="inherit" style={{ flex: 1 }}>
     Adventures
    </Typography>
+
+
         <Button variant="contained" color="primary" >
-          Home
+      <Link to="/users" >Users</Link>
         </Button>
 
         <Button variant="contained" color="primary">
-          Home
+            <Link to="/contact">Contact</Link>
         </Button>
+        <Button variant="contained" color="primary">
+            <Link to="/home">Home</Link>
+        </Button>
+
+
+
 </Toolbar>
       </AppBar>
 
+ <Switch>
+      <Route exact path="/users" component={Users} />
+      <Route exact path="/contact" component={Contact} />
+<Route exact path="/home" component={Home} />
+  <Route component={Home} />
+     </Switch>
 
-<MediaCard/>
+
     <Grid container direction="row" justify="space-evenly" alignItems="flex-start" className="footer" >
 
 <div>
@@ -93,6 +112,7 @@ const App = () => {
    </form>
 
     </Grid>
+    </Router>
     </div>
   )
 }
