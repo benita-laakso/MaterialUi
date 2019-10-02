@@ -1,55 +1,51 @@
 import React from "react";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+  CardActions
+} from "@material-ui/core";
+
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Grid from "@material-ui/core/Grid";
 import "./styles.css";
-import Typography from "@material-ui/core/Typography";
 
-import treepic from "./img/tree.jpg";
+import { Link } from "react-router-dom";
 
+import dataexample from "./dataexample";
 
-const useStyles = makeStyles({
-  card: {
-    maxWidth: 345,
-    margin: 50
-  },
-  media: {
-    height: 140
-  }
-});
+const Cards = ({ match }) => {
+  const post = dataexample;
 
-const data = [{ text: "hello", id:1 , buttontext:"Read more" }, { text: "goodby", id:2, buttontext:"Read more" }];
-
-export default function MediaCard() {
-  const classes = useStyles();
-
-return (
-    <Grid container direction="row" justify="center" alignItems="center">
-  { data.map(post => (
-        <Card className={classes.card} key={data.id}>
-          <CardMedia
-            component="img"
-            image={treepic}
-            title="Tree"
-            height="200"
-            alt="Title"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {post.text}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {post.id}
-            </Typography>
-            <div><button>{post.buttontext}</button>
-            </div>
-          </CardContent>
-
-
-        </Card>
+  return (
+    <Grid container direction="row" justify="center" alignItems="center" spacing={3} style={{margin:"75px 0"}}>
+      {post.map(postitem => (
+        <Grid item key={postitem.id} xs={3}>
+          <Card>
+            <CardMedia
+              component="img"
+              image={postitem.image}
+              title={postitem.text}
+              height="200"
+              alt={postitem.text}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {postitem.text}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {postitem.id}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Link to={`${match.url}${postitem.id}`}>Read more</Link>
+            </CardActions>
+          </Card>
+        </Grid>
       ))}
-      </Grid>
-    );
+    </Grid>
+  );
 };
+
+export default Cards;
